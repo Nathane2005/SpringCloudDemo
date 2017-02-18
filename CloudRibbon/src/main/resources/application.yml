@@ -6,25 +6,13 @@ spring:
   cloud:
     loadbalancer:
       retry:
-        #开启负载均衡重试功能
         enabled: true
 
 ribbon:
-    #当前实例最大重试次数
-    #MaxAutoRetries: 1
-    #最大重试实例数
     MaxAutoRetriesNextServer: 2
     OkToRetryOnAllOperations: true
-#eureka配置
+#eureka
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-########################################
-#ribbon重试相关配置说明
-#MaxAutoRetries
-#MaxAutoRetriesNextServer
-#当访问到故障请求的时候,ribbon会再尝试访问MaxAutoRetries次当前实例,
-#如果不行,就换一个实例进行访问,如果还是不行,
-#再换一次实例访问,更换次数由MaxAutoRetriesNextServer配置决定,
-#如果依然不行,返回失败信息
