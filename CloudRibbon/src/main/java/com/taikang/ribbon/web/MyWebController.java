@@ -27,7 +27,10 @@ public class MyWebController {
 	
 	@Autowired
 	private RetryTemplate retryTemplate;
-	
+	/**
+	*This method use RestTemplate ,the retry works well.
+	*
+	*/
 	@RequestMapping("/helloRibbon")
 	public String hello(){
 		log.info("you called me");
@@ -35,7 +38,9 @@ public class MyWebController {
 		String body = forEntity.getBody();
 		return body;
 	}
-	
+	/**
+	*This method use Feign Client ,the retry doesn't work.
+	*/
 	@RequestMapping("/helloRibbon2")
 	public String hello2() throws Exception{
 //		
